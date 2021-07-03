@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, Button, TouchableOpacity, TextInput,Dimensions, Alert } from 'react-native';
+import { StyleSheet, Text, View, Button, TouchableOpacity, TextInput,Dimensions, Image } from 'react-native';
 
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux'
@@ -13,9 +13,9 @@ const screenWidth = Dimensions.get('window').width
 class Login extends React.Component {
 
   render(){
-    const number=12
     return (
-      <View style={styles.container}>
+      <View style={{flex: 1,alignItems: 'center'}}>
+        <Image source={require('../../assets/backgrounds/back3.jpg')} style={{position:'absolute',zIndex:-1, width:screenWidth,height:screenHeight+50}}></Image>
         <Text style={{fontSize:35,fontFamily:'logo-font', marginVertical:60}}>Instagram</Text>
         <View style={{marginTop:100}}>
         <View style={{width:screenWidth*0.9, height:15,marginTop:10}}>
@@ -44,7 +44,8 @@ class Login extends React.Component {
         <TouchableOpacity style={{width:screenWidth*0.6,height:50,borderRadius:30,backgroundColor:'#0095f6',justifyContent:'center',alignItems:'center'}}>
           <Text style={{color:'white', fontWeight:'bold', fontSize:20}}>LOGIN</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={{alignItems:'center',flexDirection:'row'}}>
+        <TouchableOpacity style={{alignItems:'center',flexDirection:'row',marginTop:10}}
+        onPress={()=> this.props.navigation.navigate('Signup')}>
           <Text style={{fontSize:18}}>Don't have an account?</Text>
           <Text style={{fontSize:18,fontWeight:'bold',color:'#0095f6'}}>Signup!</Text>
         </TouchableOpacity>
@@ -60,14 +61,6 @@ class Login extends React.Component {
   }
 }
 
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-    alignItems: 'center',
-  },
-});
 
 const mapDispatchToProps = (dispatch) =>{
   return bindActionCreators({updateEmail, updatePassword},dispatch)
