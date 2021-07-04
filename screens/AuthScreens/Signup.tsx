@@ -6,7 +6,7 @@ import { StyleSheet, Text, View, Button, TouchableOpacity, TextInput,Dimensions,
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux'
 import { useRef } from 'react';
-import {updateEmail, updatePassword, updateUsername} from '../../actions/user'
+import {updateEmail, updatePassword, updateUsername,signup} from '../../actions/user'
 
 const screenHeight = Dimensions.get('window').height
 const screenWidth = Dimensions.get('window').width
@@ -16,8 +16,8 @@ class Signup extends React.Component {
     repeat:'',
   }
   onSignupPress =() =>{
-    if (this.props.user.password == this.state.repeat){
-      alert('the passcodes are identical')
+    if (this.props.user.password == this.state.repeat && this.props.user.username != ''){
+      this.props.signup()
     }
     else{
       alert('the passcode are different')
@@ -82,7 +82,7 @@ class Signup extends React.Component {
 
 
 const mapDispatchToProps = (dispatch) =>{
-  return bindActionCreators({updateEmail, updatePassword,updateUsername},dispatch)
+  return bindActionCreators({updateEmail, updatePassword,updateUsername,signup},dispatch)
 }
 const mapStateToProps = (state) =>{
   return{
