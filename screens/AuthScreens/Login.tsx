@@ -6,7 +6,7 @@ import { StyleSheet, Text, View, Button, TouchableOpacity, TextInput,Dimensions,
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux'
 import { useRef } from 'react';
-import {updateEmail, updatePassword} from '../../actions/user'
+import {updateEmail, updatePassword,login} from '../../actions/user'
 
 const screenHeight = Dimensions.get('window').height
 const screenWidth = Dimensions.get('window').width
@@ -41,7 +41,8 @@ class Login extends React.Component {
         />
         </View>
         <View style={{width:screenWidth,marginTop:15,justifyContent:'center',alignItems:'center'}}>
-        <TouchableOpacity style={{width:screenWidth*0.6,height:50,borderRadius:30,backgroundColor:'#0095f6',justifyContent:'center',alignItems:'center'}}>
+        <TouchableOpacity style={{width:screenWidth*0.6,height:50,borderRadius:30,backgroundColor:'#0095f6',justifyContent:'center',alignItems:'center'}}
+        onPress={()=> this.props.login()}>
           <Text style={{color:'white', fontWeight:'bold', fontSize:20}}>LOGIN</Text>
         </TouchableOpacity>
         <TouchableOpacity style={{alignItems:'center',flexDirection:'row',marginTop:10}}
@@ -63,7 +64,7 @@ class Login extends React.Component {
 
 
 const mapDispatchToProps = (dispatch) =>{
-  return bindActionCreators({updateEmail, updatePassword},dispatch)
+  return bindActionCreators({updateEmail, updatePassword,login},dispatch)
 }
 const mapStateToProps = (state) =>{
   return{
