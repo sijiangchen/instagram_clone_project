@@ -1,7 +1,7 @@
 import React from 'react'
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import HomeScreen from '.../screens/TabScreens/HomeScreen'
-import PostScreen from '.../screens/TabScreens/PostScreen'
+import HomeScreen from '../screens/TabScreens/HomeScreen'
+import PostScreen from '../screens/TabScreens/PostScreen'
 const Tab = createMaterialBottomTabNavigator();
 
 
