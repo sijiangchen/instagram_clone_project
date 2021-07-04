@@ -2,7 +2,8 @@ import { Component } from 'react'
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Button, TouchableOpacity, TextInput, Dimensions, Image} from 'react-native';
-import * as firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -11,7 +12,7 @@ import {getUser} from '../../actions/user'
 const screenHeight = Dimensions.get('window').height
 const screenWidth = Dimensions.get('window').width
 
-class Login extends React.Component {
+class Welcome extends React.Component {
     componentDidMount =()=>{
         firebase.auth().onAuthStateChanged((user)=>{
             if(user){
@@ -48,7 +49,7 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect (mapStateToProps, mapDispatchToProps)(Login)
+export default connect (mapStateToProps, mapDispatchToProps)(Welcome)
 
 
 
