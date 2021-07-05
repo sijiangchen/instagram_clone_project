@@ -1,3 +1,4 @@
+import { State } from "react-native-gesture-handler";
 import { action, combineReducers } from "redux";
 
 const user = (state = {}, action) =>{
@@ -15,8 +16,18 @@ const user = (state = {}, action) =>{
     }
 }
 
+const post = (state={}, action) =>{
+    switch(action.type){
+        case 'UPDATE_POST_NEXT_PHOTO':
+            return {...State, photos:action.payload}
+        default:
+            return state
+    }
+}
+
 const rootReducer = combineReducers({
-    user
+    user,
+    post
 })
 
 export default rootReducer
