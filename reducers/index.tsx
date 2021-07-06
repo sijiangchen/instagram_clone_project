@@ -11,6 +11,8 @@ const user = (state = {}, action) =>{
             return {...state,password:action.payload}
         case 'UPDATE_USERNAME':
             return {...state,username:action.payload.toLowerCase().replace(' ','_')}
+        case 'UPDATE_PHOTO':
+            return {...state,photo:action.payload}
         default:
             return state
     }
@@ -20,6 +22,8 @@ const post = (state={}, action) =>{
     switch(action.type){
         case 'UPDATE_POST_NEXT_PHOTO':
             return {...State, photos:action.payload}
+        case 'UPDATE_DESCRIPTION':
+            return {...state, description:action.payload}
         default:
             return state
     }

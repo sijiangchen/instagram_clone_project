@@ -9,6 +9,7 @@ import { getUser } from '../../actions/user'
 import { uploadPhoto } from '../../actions/index';
 import { updateNextPhoto,removeImage } from '../../actions/post';
 import { FontAwesome } from '@expo/vector-icons'
+import { SlideFromRightIOS } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
 
 
 
@@ -56,9 +57,13 @@ class PostScreen extends React.Component {
         }
     }
 
+    uploadPost = ()=>{
+        this.props.navigation.navigate("PostCheckout")
+    }
     render(){
         return (
             <SafeAreaView style={{flex:1,}}>
+                 <Image source={require('../../assets/backgrounds/ins_background.jpeg')} style={{position:'absolute',zIndex:-1, width:screenWidth,height:screenHeight+50,opacity:0.5}}></Image>
                 <View style={(Platform.OS == 'ios')
                 ?
                 {width:screenWidth,height:55, borderBottomColor:'grey', borderBottomWidth:1}
@@ -66,7 +71,8 @@ class PostScreen extends React.Component {
                 {width:screenWidth,height:55, borderBottomColor:'grey', borderBottomWidth:1,marginTop:20,justifyContent:'space-between',alignItems:'center',flexDirection:'row'}}>
                
                 <Text style={{margin:10,fontWeight:'bold',fontSize:22}}>Create a new post</Text>
-                <TouchableOpacity style={{margin:10}}>
+                <TouchableOpacity style={{margin:10}}
+                onPress={()=>this.uploadPost()}>
                     <Text style={{margin:10,fontWeight:'bold',fontSize:22,color:"blue"}}>Upload</Text>
                 </TouchableOpacity>
                 </View>
