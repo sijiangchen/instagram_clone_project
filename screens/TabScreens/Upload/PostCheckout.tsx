@@ -3,7 +3,6 @@ import { ScrollView, StyleSheet, Text, View, Button, TouchableOpacity, TextInput
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { getUser } from '../../actions/user'
 
 import { updateDescription } from "../../../actions/post";
 const screenHeight = Dimensions.get('window').height

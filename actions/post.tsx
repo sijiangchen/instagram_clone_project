@@ -2,6 +2,7 @@ import uuid from "uuid";
 import firebase from 'firebase/app';
 import db from "../config/Firebase";
 import "firebase/firestore";
+import { exp } from "react-native-reanimated";
 
 export const updateDescription = (input) =>{
     return {type:'UPDATE_DESCRIPTION',payload:input}
@@ -19,6 +20,7 @@ export const updateNextPhoto = (input) =>{
             
             dispatch({type:'UPDATE_POST_NEXT_PHOTO',payload:array})
         }catch(e){
+
             alert(e)
         }
     }
@@ -37,6 +39,7 @@ export const removeImage = (photoToremove) =>{
             dispatch({type: 'UPDATE_POST_NEXT_PHOTO',payload:array})
 
         }catch(e){
+          
             alert(e)
         }
     }
@@ -66,35 +69,20 @@ export const uploadPost = () => {
 			})
 		}catch(e){
 			alert(e)
+            
 		}
 	}
 }
-// export const uploadPost=() =>{
-//     return async(dispatch,getState) =>{
-//         try{
-//             const {post,user,} =getState()
 
-//             const id = uuid.v4()
-//             const upload = {
-//                 id:id,
-//                 uid: user.uid,
-//                 photo: user.photo,
-//                 photos: post.photos,
-//                 username: user.username,
-//                 date: new Date().getTime(),
-//                 likes:[],
-//                 comments:[],
-//                 description: post.description
+export const getPosts =(numberOfPosts) =>{
+    return async (dispatch, getState) =>{
+        const posts = await db.collection('posts').orderBy('date','desc').limit(numberOfPosts).get()
 
-//             }
-//             //user.uid is the username of the signed account
-//             await db.collection('posts').doc(id).set(upload)
-//             await db.collection('user').doc(user.uid).update({
-//                 posts:firebase.firestore.FieldValue.arrayUnion(id)
-//             })
-            
-//         }catch(e){
-//             alert(e)
-//         }
-//     }
-// }
+        let array = []
+        posts.forEach(post => {
+            array.push(post.data())
+        });
+
+        dispatch({type:"GET_POSTS",payload:array})
+    }
+}
