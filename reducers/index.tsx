@@ -24,6 +24,8 @@ const post = (state={}, action) =>{
             return {...State, photos:action.payload}
         case 'UPDATE_DESCRIPTION':
             return {...state, description:action.payload}
+        case 'GET_POSTS':
+            return {...state,feed:action.payload}
         default:
             return state
     }

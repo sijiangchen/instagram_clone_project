@@ -20,7 +20,7 @@ class ProfilePicture extends React.Component {
             const { status } = await Permissions.askAsync(Permissions.CAMERA)
             if(status ==='granted'){
                 const image = await ImagePicker.launchImageLibraryAsync({
-                    mediaTypes: ImagePicker.MediaTypeOptions.Images,
+                    // mediaTypes: ImagePicker.MediaTypeOptions.Images,
                     allowsEditing:true
                 })
                 if(!image.cancelled){
