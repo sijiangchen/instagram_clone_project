@@ -1,5 +1,5 @@
 import uuid from "uuid";
-import * as firebase from 'firebase';
+import firebase from 'firebase/app';
 import db from "../config/Firebase";
 import "firebase/firestore";
 
