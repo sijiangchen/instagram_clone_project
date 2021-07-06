@@ -15,7 +15,7 @@ class Login extends React.Component {
   render(){
     return (
       <View style={{flex: 1,alignItems: 'center'}}>
-        <Image source={require('../../assets/backgrounds/back3.jpg')} style={{position:'absolute',zIndex:-1, width:screenWidth,height:screenHeight+50}}></Image>
+        <Image source={require('../../assets/backgrounds/ins_background.jpeg')} style={{position:'absolute',zIndex:-1, width:screenWidth,height:screenHeight+50}}></Image>
         <Text style={{fontSize:35,fontFamily:'logo-font', marginVertical:60}}>Instagram</Text>
         <View style={{marginTop:100}}>
         <View style={{width:screenWidth*0.9, height:15,marginTop:10}}>
@@ -46,7 +46,7 @@ class Login extends React.Component {
           <Text style={{color:'white', fontWeight:'bold', fontSize:20}}>LOGIN</Text>
         </TouchableOpacity>
         <TouchableOpacity style={{alignItems:'center',flexDirection:'row',marginTop:10}}
-        onPress={()=> this.props.navigation.navigate('Signup')}>
+        onPress={()=> this.props.navigation.navigate('ProfilePicture')}>
           <Text style={{fontSize:18}}>Don't have an account?</Text>
           <Text style={{fontSize:18,fontWeight:'bold',color:'#0095f6'}}>Signup!</Text>
         </TouchableOpacity>

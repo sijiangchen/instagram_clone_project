@@ -27,7 +27,7 @@ class Signup extends React.Component {
   render(){
     return (
       <View style={{flex: 1,alignItems: 'center'}}>
-        <Image source={require('../../assets/backgrounds/back3.jpg')} style={{position:'absolute',zIndex:-1, width:screenWidth,height:screenHeight+50}}></Image>
+        <Image source={require('../../assets/backgrounds/ins_background.jpeg')} style={{position:'absolute',zIndex:-1, width:screenWidth,height:screenHeight+50}}></Image>
         <View style={{width:screenWidth*0.9, height:15,marginTop:10}}>
           <Text style={{left:15}}>Username</Text>
         </View>
